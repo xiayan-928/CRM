@@ -86,7 +86,7 @@ $(function(){
    $itemBoxList = $(".menuBox").find(".itemBox");
     //当点击客户管理或者组织管理掉这个函数
     })
-    //控制组织结构和客户管理点击切换
+//控制组织结构和客户管理点击切换
     function handGroup(index){
         let $group1 = $itemBoxList.filter((_,item)=>{
            let text = $(item).attr("text");
