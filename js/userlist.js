@@ -2,7 +2,7 @@ $(function(){
 let checkList = null;
     initDepartment();
 //显示部门
-    async function initDepartment(){
+async function initDepartment(){
  let result = await queryDepart();
  if(result.code == 0){
     let str = `<option value="0">全部员工</option>`;
@@ -20,7 +20,6 @@ async function showUserlist(){
         departmentId:$(".selectBox").val(),
         search:$(".searchInp").val().trim()
     } 
-    console.log(params);
    //刚开始默认0 ''
     let result = await axios.get("/user/list",{params})
     let str = ``;

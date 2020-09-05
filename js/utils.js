@@ -64,11 +64,12 @@ async function queryDepart() {
 		department = localStorage.getItem('department');
 	if (department) {
 		department = JSON.parse(department);
-		if (new Date().getTime() - department.time <= 86400000) {
+		if (new Date().getTime() - department.time <= 800) {
 			return department.data;
 		}
 	}
 	result = await axios.get('/department/list');
+	console.log(result)
 	localStorage.setItem('department', JSON.stringify({
 		time: new Date().getTime(),
 		data: result
@@ -84,7 +85,7 @@ async function queryJob() {
 		job = localStorage.getItem('job');
 	if (job) {
 		job = JSON.parse(job);
-		if (new Date().getTime() - job.time <= 86400000) {
+		if (new Date().getTime() - job.time <= 800) {
 			return job.data;
 		}
 	}

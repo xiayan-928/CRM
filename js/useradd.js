@@ -34,8 +34,6 @@ if(params.hasOwnProperty("id")){
     async function initDeptAndJob() {
         let departmentData = await queryDepart();
         let jobData = await queryJob();
-        console.log( departmentData);
-        console.log(jobData);
         if(departmentData.code === 0){
             departmentData = departmentData.data;
             let str = ``;
@@ -52,7 +50,6 @@ if(params.hasOwnProperty("id")){
             })
             $(".userjob").html(str);
         }
-
     }
     //用户名进行验证
     function checkname(){

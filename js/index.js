@@ -43,11 +43,11 @@ $(function(){
         <div class = "itemBox" text="部门管理">
         <h3>
         <i class="iconfont icon-yuangong"></i>
-        员工管理
+        部门管理
         </h3>
     <nav class="item">
         <a href="page/departmentlist.html" target="iframeBox">部门列表</a>
-        <a href="page/departmenadd.html" target="iframeBox">新增部门</a>
+        <a href="page/departmentadd.html" target="iframeBox">新增部门</a>
     </nav>
     </div>
         `
@@ -60,8 +60,8 @@ $(function(){
         职位管理
         </h3>
     <nav class="item">
-        <a href="page/departmentlist.html" target="iframeBox">职位列表</a>
-        <a href="page/departmenadd.html" target="iframeBox">新增职位</a>
+        <a href="page/joblist.html" target="iframeBox">职位列表</a>
+        <a href="page/jobadd.html" target="iframeBox">新增职位</a>
     </nav>
     </div>
         `
@@ -74,8 +74,8 @@ $(function(){
         客户管理
         </h3>
     <nav class="item">
-        <a href="page/customerlist.html" target="iframeBox">我的客户</a>
-        <a href="page/customerlist.html" target="iframeBox">全部客户</a>
+        <a href="page/customerlist.html?lx=my" target="iframeBox">我的客户</a>
+        <a href="page/customerlist.html?lx=all" target="iframeBox">全部客户</a>
         <a href="page/customeradd.html" target="iframeBox">新增客户</a>
     </nav>
     </div>
@@ -116,7 +116,6 @@ $plan.add(power=>{
     $navBoxList.click(function(){
         let index = $(this).index();
         let text = $(this).html().trim();
-        console.log(text)
         //当点击按钮来首先处理权限问题
        if((text === "客户管理" && !/customerall/.test(power)) || (text === "组织结构" && !/(userhandle|departhandle|jobhandle)/.test(power)))
        {
@@ -138,15 +137,12 @@ $plan.add(power=>{
     let url = "page/customerlist.html"
     if(power.includes("customerall")){
         $(".iframeBox").attr("src",url)
-        console.log(".......")
-        console.log(power)
     }
    
 })
 
 async function init(){
         let result = await axios.get("user/login");
-        console.log((result))
         if(result.code != 0){
             alert("你还没有登录，请先登录");
             window.location.href="login.html";
